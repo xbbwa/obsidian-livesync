@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:  # 添加这一行，允许手动触发
+  workflow_dispatch:
 
 jobs:
   build:
@@ -19,14 +19,14 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
-- name: Login to ACR
-  run: |
-    docker login --username=${{ secrets.ACR_USERNAME }} registry.cn-hangzhou.aliyuncs.com \
-      -p ${{ secrets.ACR_PASSWORD }}
-        environment:
+      - name: Login to ACR
+        run: |
+          echo ${{ secrets.ACR_PASSWORD }} | docker login --username=${{ secrets.ACR_USERNAME }} registry.cn-hangzhou.aliyuncs.com -p
+        env:
+          ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
           ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
 
       - name: Build and Push
         run: |
-          docker build -t registry.cn-hangzhou.aliyuncs.com/xbbwa/livesync:latest .
-          docker push registry.cn-hangzhou.aliyuncs.com/xbbwa/livesync:latest
+          docker build -t registry.cn-hangzhou.aliyuncs.com/your-namespace/livesync:latest .
+          docker push registry.cn-hangzhou.aliyuncs.com/your-namespace/livesync:latest
