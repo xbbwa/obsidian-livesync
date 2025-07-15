@@ -3,7 +3,8 @@ name: Build and Push Docker Image to ACR
 on:
   push:
     branches:
-      - main  # 如果你的默认分支是 master，请改为 master
+      - main
+  workflow_dispatch:  # 添加这一行，允许手动触发
 
 jobs:
   build:
