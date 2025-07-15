@@ -13,8 +13,8 @@ RUN npm ci --only=production
 # 复制项目源代码
 COPY . .
 
-# 暴露端口
-EXPOSE 8080
+# 执行构建命令（关键步骤）
+RUN npm run build
 
-# 启动命令
-CMD ["npm", "start"]
+# 指定默认命令（替代缺失的 npm start）
+CMD ["sh", "-c", "ls -la dist/"]
