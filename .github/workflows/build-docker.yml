@@ -18,13 +18,12 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
-        
+
       - name: Login to ACR
         run: |
-          echo $(echo -n ${{ secrets.ACR_DOCKER_PASS_BASE64 }} | base64 --decode) | docker login --username=${{ secrets.ACR_DOCKER_USER }} registry.cn-hangzhou.aliyuncs.com
+          echo ${{ secrets.ACR_DOCKER_PASS }} | docker login --username=${{ secrets.ACR_DOCKER_USER }} --password-stdin registry.cn-hangzhou.aliyuncs.com
 
       - name: Build and Push
         run: |
           docker build -t registry.cn-hangzhou.aliyuncs.com/xbbwa/obsidian:latest .
           docker push registry.cn-hangzhou.aliyuncs.com/xbbwa/obsidian:latest
-
