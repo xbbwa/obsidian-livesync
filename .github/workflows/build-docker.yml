@@ -18,10 +18,10 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
-      - name: Login to ACR
-        run: |
-          docker login --username=1030016228@qq.com registry.cn-hangzhou.aliyuncs.com \
-            -p ${{ secrets.ACR_PASSWORD }}
+- name: Login to ACR
+  run: |
+    docker login --username=${{ secrets.ACR_USERNAME }} registry.cn-hangzhou.aliyuncs.com \
+      -p ${{ secrets.ACR_PASSWORD }}
         environment:
           ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
 
