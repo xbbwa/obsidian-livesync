@@ -25,5 +25,5 @@ jobs:
 
       - name: Build and Push
         run: |
-          docker build -t registry.cn-hangzhou.aliyuncs.com/your-namespace/livesync:latest .
-          docker push registry.cn-hangzhou.aliyuncs.com/your-namespace/livesync:latest
+          docker build -t registry.cn-hangzhou.aliyuncs.com/xbbwa/obsidian:latest .
+          docker push registry.cn-hangzhou.aliyuncs.com/xbbwa/obsidian:latest
