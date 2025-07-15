@@ -1,5 +1,5 @@
 # 使用官方 Node.js 镜像作为基础镜像
-FROM node:18
+FROM node:22  # 升级到支持 ESM 的 Node.js 版本
 
 # 设置工作目录
 WORKDIR /usr/src/app
@@ -10,10 +10,10 @@ COPY package*.json ./
 # 安装依赖
 RUN npm ci --only=production
 
-# 复制项目源代码
+# 复制项目源代码（关键步骤）
 COPY . .
 
-# 执行构建命令（关键步骤）
+# 执行构建命令
 RUN npm run build
 
 # 指定默认命令（替代缺失的 npm start）
