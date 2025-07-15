@@ -1,0 +1,31 @@
+name: Build and Push Docker Image to ACR
+
+on:
+  push:
+    branches:
+      - main  # 如果你的默认分支是 master，请改为 master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu@v1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login to ACR
+        run: |
+          docker login --username=1030016228@qq.com registry.cn-hangzhou.aliyuncs.com \
+            -p ${{ secrets.ACR_PASSWORD }}
+        environment:
+          ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
+
+      - name: Build and Push
+        run: |
+          docker build -t registry.cn-hangzhou.aliyuncs.com/xbbwa/livesync:latest .
+          docker push registry.cn-hangzhou.aliyuncs.com/xbbwa/livesync:latest
