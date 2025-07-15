@@ -21,7 +21,7 @@ jobs:
 
       - name: Login to ACR
         run: |
-          echo ${{ secrets.ACR_DOCKER_PASS }} | docker login --username=${{ secrets.ACR_DOCKER_USER }} --password-stdin registry.cn-hangzhou.aliyuncs.com
+          echo ${{ secrets.ACR_DOCKER_PASS }} | docker login --username=${{ secrets.ACR_DOCKER_USER }} --password-stdin crpi-rzhzrny326es98fs.cn-hangzhou.personal.cr.aliyuncs.com
 
       - name: Build and Push
         run: |
