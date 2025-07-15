@@ -25,5 +25,5 @@ jobs:
 
       - name: Build and Push
         run: |
-          docker build -t registry.cn-hangzhou.aliyuncs.com/xbbwa/obsidian:latest .
-          docker push registry.cn-hangzhou.aliyuncs.com/xbbwa/obsidian:latest
+          docker build -t crpi-rzhzrny326es98fs.cn-hangzhou.personal.cr.aliyuncs.com/xbbwa/obsidian:latest .
+          docker push crpi-rzhzrny326es98fs.cn-hangzhou.personal.cr.aliyuncs.com/xbbwa/obsidian:latest
