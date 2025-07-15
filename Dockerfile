@@ -1,5 +1,5 @@
-# 使用支持 ESM 的 Node.js 22 镜像
-FROM node:22
+# 使用支持 ESM 的 Node.js v20
+FROM node:20
 
 # 设置工作目录
 WORKDIR /usr/src/app
@@ -7,16 +7,17 @@ WORKDIR /usr/src/app
 # 复制 package.json 和 package-lock.json
 COPY package*.json ./
 
-# 安装依赖并强制更新
-RUN npm install -g tsx && \
-    npm install -g prettier && \
-    npm ci --only=production
+# 安装全局依赖（关键修复）
+RUN npm install -g tsx@4.19.4 prettier@3.5.2
 
-# 复制完整项目文件（确保 src 目录存在）
+# 安装项目依赖
+RUN npm ci --only=production
+
+# 强制复制完整项目文件（确保 src 目录存在）
 COPY . .
 
 # 执行构建命令
-RUN npm run build
+RUN npm run bakei18n && npm run build
 
 # 暴露端口并启动服务端
 EXPOSE 8080
