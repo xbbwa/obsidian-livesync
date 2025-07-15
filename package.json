@@ -5,6 +5,7 @@
     "main": "main.js",
     "type": "module",
     "scripts": {
+        "start": "node server.js"
         "bakei18n": "npx tsx ./src/lib/_tools/bakei18n.ts",
         "i18n:bakejson": "npx tsx ./src/lib/_tools/bakei18n.ts",
         "i18n:yaml2json": "npx tsx ./src/lib/_tools/yaml2json.ts",
