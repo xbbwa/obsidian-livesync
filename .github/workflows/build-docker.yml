@@ -25,8 +25,5 @@ jobs:
 
       - name: Build and Push
         run: |
-          # 构建镜像并标记为阿里云仓库地址
           docker build -t crpi-rzhzrny326es98fs.cn-hangzhou.personal.cr.aliyuncs.com/xbbwa/obsidian:latest .
-          
-          # 推送镜像到阿里云 ACR
           docker push crpi-rzhzrny326es98fs.cn-hangzhou.personal.cr.aliyuncs.com/xbbwa/obsidian:latest
