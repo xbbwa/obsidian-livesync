@@ -19,6 +19,10 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
+      - name: Login to ACR
+        run: |
+          echo ${{ secrets.ACR_DOCKER_PASS }} | docker login --username=${{ secrets.ACR_DOCKER_USER }} --password-stdin registry.cn-hangzhou.aliyuncs.com
+
       - name: Build and Push
         run: |
           # 构建镜像并标记为阿里云仓库地址
